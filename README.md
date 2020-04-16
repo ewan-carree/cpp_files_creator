@@ -4,13 +4,9 @@ This python script creates the three necessary files to code in C++
 ## Template
 ### First file template
 //////////////////////////////////
-
 //	Prog.cpp
-
 //	2020-04-16 17:17:32.772289
-
 //	ewan
-
 //////////////////////////////////
 
 #include "test.hpp"
@@ -19,7 +15,7 @@ int main(int argc, char const *argv[])
 {
 	std::cout << "hello" << std::endl;
 	return 0;
-}
+	}
 
 ### Second file template
 #include "test.hpp"

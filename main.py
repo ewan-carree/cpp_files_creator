@@ -1,4 +1,4 @@
-#créer un allias pour lancer directement le scrit
+#alias cpp='python3 ~/Workspace_ubuntu/C++/cpp_files_creator/main.py'
 
 import lib
 import files
@@ -11,7 +11,7 @@ time = lib.get_time()
 def main():
 	main, header, namespace = lib.extract_args()
 	lib.create_file(header)
-	lib.set_path(lib.get_path(), main)
+	lib.set_path(lib.get_path(), header)
 	lib.add_GNU()
 
 	mainFile= files.Main_cpp(main)

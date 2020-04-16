@@ -5,28 +5,20 @@ class Main_cpp():
 		self.name_ = name+".cpp"
 
 	def create_main_cpp(self, userName, time, headerName):
-		content = """
-		#################
-		prog.cpp
-		time
-		userName
-		#################
-
-		include "header.hpp"
-
-		int main(int argc, char const *argv[])
-		{
-			/* code */
-			return 0;
-		}
-
-		"""
-		content.replace("prog.cpp",self.name_)
-		content.replace("time", time)
-		content.replace("userName", userName)
-		content.replace("header.hpp", headerName+".hpp")
 		with open(self.name_, 'w') as file:
-			file.write(content)
+			file.write("//////////////////////////////////\n")
+			file.write('//\t'+self.name_.capitalize()+'\n')
+			file.write('//\t'+time+'\n')
+			file.write('//\t'+userName+'\n')
+			file.write("//////////////////////////////////\n\n")
+
+			file.write("#include &".replace("&", '"')+headerName+".hpp&\n\n".replace("&", '"'))
+
+			file.write("int main(int argc, char const *argv[])\n")
+			file.write("{\n")
+			file.write("\t/* code */\n")
+			file.write("\treturn 0;\n")
+			file.write("}\n")
 
 class Header_cpp():
 	def __init__(self, name, namespace):
@@ -34,45 +26,29 @@ class Header_cpp():
 		self.namespace_ = namespace
 
 	def create_header_cpp(self, headerName):
-		content = """
-		include "header.hpp"
-
-		namespace exam
-		{
-			
-		} //exam		
-		"""
-		content.replace("header.hpp", headerName+".hpp")
-		content.replace("exam", self.namespace_)
 		with open(self.name_, 'w') as file:
-			file.write(content)
+			file.write("#include &".replace("&", '"')+headerName+".hpp&\n\n".replace("&", '"'))
+			file.write("namespace "+self.namespace_+"\n")
+			file.write("{\n")
+			file.write("\n")
+			file.write("} //"+self.namespace_+"\n")
 
 class Header_hpp():
 	def __init__(self, name, namespace):
-		self.name_ = name+".hpp"	
+		self.name_ = name+"_hpp"	
 		self.namespace_ = namespace	
 
 	def create_header_hpp(self):
-		content="""
-		#ifndef NURSERY_HPP
-		#define NURSERY_HPP
-
-		#include <vector>
-		#include <string>
-		#include <stdexcept> //runtime_error
-		#include <iostream>
-		#include <utility> // std::move()
-
-
-		namespace exam{
-
-
-		} // exam
-
-		#endif //NURSERY_HPP
-		"""
-		content.replace("NURSERY_HPP", self.name_.upper())
-		content.replace('.', '_')
-		content.replace("exam", self.namespace_)
-		with open(self.name_, 'w') as file:
-			file.write(content)
+		with open(self.name_.replace('_', '.'), 'w') as file:
+			file.write("#ifndef "+self.name_.upper()+"\n")
+			file.write("#define "+self.name_.upper()+"\n\n")
+			file.write("#include <vector>\n")
+			file.write("#include <string>\n")
+			file.write("#include <stdexcept> //runtime_error\n")
+			file.write("#include <iostream>\n")
+			file.write("#include <utility> // std::move()\n\n")
+			file.write("namespace "+self.namespace_+"\n")
+			file.write("{\n")
+			file.write("\n")
+			file.write("} //"+self.namespace_+"\n")
+			file.write("#endif //"+self.name_.upper())

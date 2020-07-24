@@ -3,65 +3,66 @@ This python script creates the three necessary files to code in C++ (.cpp / .hpp
 
 ## Template
 ### First file template
-//////////////////////////////////
+	//////////////////////////////////
 
-//	Prog.cpp
+	//	Prog.cpp
 
-//	2020-04-16 17:17:32.772289
+	//	2020-04-16 17:17:32.772289
 
-//	ewan
+	//	ewan
 
-//////////////////////////////////
+	//////////////////////////////////
 
-#include "test.hpp"
+	#include "test.hpp"
 
-int main(int argc, char const *argv[])
+	int main(int argc, char const *argv[])
 
-{
+	{
 
-	std::cout << "hello" << std::endl;
+		std::cout << "hello" << std::endl;
 
-	return 0;
+		return 0;
 
-}
+	}
 
 ### Second file template
 
-#include "test.hpp"
+	#include "test.hpp"
 
-namespace exam
+	namespace exam
 
-{
+	{
 
-} //exam
+	} //exam
 
 ### Third file template
 
-#ifndef TEST_HPP
+	#ifndef TEST_HPP
 
-#define TEST_HPP
+	#define TEST_HPP
 
-#include <vector>
+	#include <vector>
 
-#include <string>
+	#include <string>
 
-#include <stdexcept> //runtime_error
+	#include <stdexcept> //runtime_error
 
-#include <iostream>
+	#include <iostream>
 
-#include <utility> // std::move()
+	#include <utility> // std::move()
 
-namespace exam
+	namespace exam
 
-{
+	{
 
-} //exam
+	} //exam
 
-#endif //TEST_HPP
+	#endif //TEST_HPP
 
 ## Use of cpp_files_creator
 you have to use your main.py with tree arguments, no more, no less ord it won't work
-template : main.py mainProgName headersProgName nameSpaceName
+
+main.py mainProgName headersProgName nameSpaceName
 
 ### Tip
 you can create an alias as I did on your console:

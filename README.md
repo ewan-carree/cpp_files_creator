@@ -1,75 +1,78 @@
 # CPP_FILES_CREATOR
-This python script creates the three necessary files to code in C++ (.cpp / .hpp)
+This python script creates the three necessary files to code in C++ (.cpp / .hpp) with the appropriate makefile.
+
+
+Here are the templates if I run this command :  cpp main GithubExample git --folder=True (cpp is my alias for "python3 /path/to/cpp_files_creator/main.py")
 
 ## Template
 ### First file template
 	//////////////////////////////////
-
-	//	Prog.cpp
-
-	//	2020-04-16 17:17:32.772289
-
-	//	ewan
-
+	//	main.cpp
+	//	2020-11-06 20:27:23.337267
+	//	carree
 	//////////////////////////////////
 
-	#include "test.hpp"
+	#include "GithubExample.hpp"
 
 	int main(int argc, char const *argv[])
-
 	{
-
-		std::cout << "hello" << std::endl;
-
+		/* code */
 		return 0;
-
 	}
 
 ### Second file template
 
-	#include "test.hpp"
+	#include "GithubExample.hpp"
 
-	namespace exam
-
+	namespace git
 	{
 
-	} //exam
+	} //git
 
 ### Third file template
 
-	#ifndef TEST_HPP
-
-	#define TEST_HPP
+	#ifndef GITHUBEXAMPLE_HPP
+	#define GITHUBEXAMPLE_HPP
 
 	#include <vector>
-
 	#include <string>
-
 	#include <stdexcept> //runtime_error
-
 	#include <iostream>
-
 	#include <utility> // std::move()
 
-	namespace exam
-
+	namespace git
 	{
+		class GithubExample
+		{
+			/* attributes */
 
-	} //exam
+			GithubExample() : GithubExample(/* parameters */) { }
+			GithubExample(/* parameters */) : /* complete */ { }
 
-	#endif //TEST_HPP
+			GithubExample(const GithubExample &) = default; //constructeur par recopie
+			GithubExample(GithubExample &&) = default; //constructeur par déplacement
+			GithubExample& operator=(const GithubExample &) = default; //affectation par recopie
+			GithubExample& operator=(GithubExample &&) = default; //affectation par déplacement
+			~GithubExample() = default; //destructeur
+		};
+
+		std::ostream& operator<<(std::ostream& os, const GithubExample& g)
+		{
+			os << /* complete */;
+			return os;
+		}
+	} //git
+	#endif //GITHUBEXAMPLE_HPP
 
 ## Use of cpp_files_creator
-you have to use your main.py with tree arguments, no more, no less ord it won't work
+You have to use your main.py with tree arguments, no more, no less ord it won't work
 
-main.py mainProgName headersProgName nameSpaceName
+python3 main.py mainProgName headersProgName nameSpaceName --Folder=True
+
+Then, if you want to add some files in relation with your project, you can run this command : python3 main.py mainProgName newHeadersProgName newNameSpaceName --add=True
 
 ### Tip
 you can create an alias as I did on your console:
 alias cpp='python3 ~/Workspace_ubuntu/C++/cpp_files_creator/main.py' in the ~/.bashrc file
 
-### Command
-then go to the directory you want to use for coding and use this new command:
-cpp ### ### ###
-
-Done !
+You have other available options that you can see by using : python3 main.py--help
